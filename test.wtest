@@ -1,0 +1,6 @@
+import vapor.*
+describe "Test de vapor"{
+	var fortnite = new Juego()
+	var agustin = new Jugador(logros = [], tiempoJuego = 2, billeteraVirtual = 100, misJuegos = [fortnite])
+	
+}
