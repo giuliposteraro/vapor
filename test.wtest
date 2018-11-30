@@ -1,6 +1,11 @@
 import vapor.*
 describe "Test de vapor"{
-	var fortnite = new Juego()
-	var agustin = new Jugador(logros = [], tiempoJuego = 2, billeteraVirtual = 100, misJuegos = [fortnite])
+	var rapidezMental = new ExperienciaAlcanzada()
+	var fortnite = new Juego(logrosQueAporta = [rapidezMental], costo = 500, dificultad = 20, cantSangre = 2,estilo = logica)
+	var pasarDeNivel = new Avance()
+	var agustin = new Jugador(logrosObtenidos = [pasarDeNivel], tiempoJuego = 2, billeteraVirtual = 100, misJuegos = [fortnite])
 	
+	test "agustin no puede comprar el fortnite"{
+		assert.throwsExceptionWithMessage("No puede comprar el juego",{agustin.puedeComprarJuego(fortnite)})
+	}
 }
