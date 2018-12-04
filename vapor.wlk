@@ -109,12 +109,10 @@ class Jugador{
 }
 
 class Logro{
-	method gemasQueAporta(usuario,juego){
-		gemasQueAporta += self.gemasQueAporta(usuario,juego)
-	} 
+	var juego
 	method gemasQueAporta(usuario,juego)
 	method esImportante(){
-		return self.gemasQueAporta() > 500
+		return self.gemasQueAporta(usuario,juego) > 500
 	}
 	
 }
@@ -130,7 +128,7 @@ class Avance inherits Logro{
 class SecretoDesbloqueado inherits Logro{
 	var logros = []
 	override method gemasQueAporta(usuario,juego){
-		 logros.forEach{logro => logro.gemasQueAporta()}
+		 return logros.sum{logro => logro.gemasQueAporta
 	}
 }
 
