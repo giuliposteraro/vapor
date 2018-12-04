@@ -109,18 +109,17 @@ class Jugador{
 }
 
 class Logro{
-	var gemasQueAporta 
 	method gemasQueAporta(usuario,juego){
-		gemasQueAporta += self.otorgarGemas(usuario,juego)
+		gemasQueAporta += self.gemasQueAporta(usuario,juego)
 	} 
-	method otorgarGemas(usuario,juego)
+	method gemasQueAporta(usuario,juego)
 	method esImportante(){
-		return gemasQueAporta > 500
+		return self.gemasQueAporta() > 500
 	}
 	
 }
 class Avance inherits Logro{
-	override method otorgarGemas(usuario,juego){
+	override method gemasQueAporta(usuario,juego){
 		return usuario.tiempoJuego() * juego.dificultad()
 	}
 	override method esImportante(){
@@ -130,13 +129,13 @@ class Avance inherits Logro{
 
 class SecretoDesbloqueado inherits Logro{
 	var logros = []
-	override method otorgarGemas(usuario,juego){
+	override method gemasQueAporta(usuario,juego){
 		 logros.forEach{logro => logro.gemasQueAporta()}
 	}
 }
 
 class ExperienciaAlcanzada inherits Logro{
-	override method otorgarGemas(usuario,juego){
+	override method gemasQueAporta(usuario,juego){
 		return (usuario.experienciaGamer() / 10) * juego.dificultad()
 	}
 }
